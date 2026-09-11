@@ -1,0 +1,129 @@
+/* Custom styles that go beyond Tailwind utilities. */
+
+body {
+  background-color: #05070a;
+  background-image:
+    linear-gradient(rgba(255, 43, 61, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 43, 61, 0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.font-mono-heading {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Blinking terminal cursor after the hero tagline */
+.terminal-cursor::after {
+  content: "_";
+  animation: blink 1s steps(1) infinite;
+  color: #ff2b3d;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Subtle glitch flicker on section headings when they scroll into view */
+.glitch-heading {
+  position: relative;
+}
+
+.glitch-heading:hover {
+  text-shadow: 2px 0 #ff2b3d, -2px 0 #ffffff;
+}
+
+/* Locked reveal card */
+#reveal-locked {
+  transition: opacity 0.4s ease;
+}
+
+#reveal-scramble {
+  letter-spacing: 0.05em;
+}
+
+/* Scrollbar, dark theme */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #05070a;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a0f14;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5c161d;
+}
+
+/* Visible focus rings everywhere for keyboard nav */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #ff2b3d;
+  outline-offset: 2px;
+}
+
+/* Terminal scroll progress bar */
+#scroll-progress {
+  box-shadow: 0 0 8px rgba(255, 43, 61, 0.8);
+  transition: width 0.1s linear;
+}
+
+/* Tactile press feedback + red glow on primary buttons */
+button,
+a.inline-block {
+  transition: transform 0.1s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+button:active,
+a.inline-block:active {
+  transform: scale(0.96);
+}
+
+.btn-glow:hover,
+.btn-glow:focus-visible {
+  box-shadow: 0 0 14px rgba(255, 43, 61, 0.6);
+}
+
+/* Floating idle animations for pixel-art mascots */
+.pixel-char {
+  image-rendering: pixelated;
+}
+
+@keyframes pixel-float-a {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(-6deg); }
+}
+@keyframes pixel-float-b {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes pixel-float-c {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(6deg); }
+}
+.animate-float-a { animation: pixel-float-a 3.2s ease-in-out infinite; }
+.animate-float-b { animation: pixel-float-b 4s ease-in-out infinite; animation-delay: 0.4s; }
+.animate-float-c { animation: pixel-float-c 3.6s ease-in-out infinite; animation-delay: 0.8s; }
+
+/* Scroll readout: pulsing glow so the bottom-right badge stands out */
+@keyframes readout-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(255, 43, 61, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(255, 43, 61, 0.9), 0 0 34px rgba(255, 43, 61, 0.3); }
+}
+.scroll-readout-pop {
+  animation: readout-pulse 2.4s ease-in-out infinite;
+}
+
+.campus-photo-placeholder {
+  background: repeating-linear-gradient(
+    45deg,
+    #0d1a10,
+    #0d1a10 10px,
+    #0a1f0d 10px,
+    #0a1f0d 20px
+  );
+}
